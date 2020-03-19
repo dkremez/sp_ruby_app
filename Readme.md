@@ -1,4 +1,4 @@
-![Actions Status](https://github.com/dkremez/sp_ruby_app/workflows/.github/workflows/ruby.yml/badge.svg)
+![RSpec Github Actions](https://github.com/dkremez/sp_ruby_app/workflows/Ruby/badge.svg?branch=master&event=push)
 
 # Ruby Developer Test
 
