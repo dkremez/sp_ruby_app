@@ -30,7 +30,7 @@ module Log
     end
 
     def uniq_view_lines
-      stats.most_uniq_views.each do |stat|
+      stats.most_uniq_views.map do |stat|
         Line.new(stat[0], stat[1], 'unique view')
       end
     end
