@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/dkremez/sp_ruby_app/workflows/ruby/badge.svg)](https://github.com/dkremez/sp_ruby_app/actions)
+
 # Ruby Developer Test
 
 ## How to run
