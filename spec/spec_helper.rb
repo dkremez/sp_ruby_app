@@ -17,6 +17,9 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'pry'
 require 'simplecov'
+require 'simplecov-console'
+
+SimpleCov.formatter = SimpleCov.formatter = SimpleCov::Formatter::Console
 SimpleCov.start
 
 def fixture_path(filename)

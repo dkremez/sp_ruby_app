@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/dkremez/sp_ruby_app/workflows/ruby/badge.svg)](https://github.com/dkremez/sp_ruby_app/actions)
+![Actions Status](https://github.com/dkremez/sp_ruby_app/workflows/.github/workflows/ruby.yml/badge.svg)
 
 # Ruby Developer Test
 
