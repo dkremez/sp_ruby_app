@@ -13,8 +13,8 @@ module Log
 
     def rows
       rows = []
-      File.open(file_path).each_line do |line|
-        row = parse_line!(line)
+      File.foreach(file_path).with_index do |line, i|
+        row = parse_line!(line, i + 1)
         rows.push(row)
       end
       rows
@@ -24,11 +24,14 @@ module Log
 
     attr_reader :file_path
 
-    def parse_line!(line)
+    def parse_line!(line, line_num)
       row = Row.new(line)
-      raise InvalidLineError unless row.valid?
-
+      raise_line_error(line_num) unless row.valid?
       row
+    end
+
+    def raise_line_error(line_num)
+      raise InvalidLineError, "Invalid format at line ##{line_num}."
     end
   end
 end

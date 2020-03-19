@@ -30,4 +30,12 @@ RSpec.describe 'parser.rb' do
       expect(`./parser.rb no_path.log`).to eq "Log file doesn't exist.\n"
     end
   end
+
+  context 'invalid file' do
+    let(:log_path) { fixture_path('logs/invalid.log') }
+
+    it 'raise no file error' do
+      expect(`./parser.rb #{log_path}`).to eq "Invalid format at line #1.\n"
+    end
+  end
 end
