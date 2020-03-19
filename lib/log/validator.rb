@@ -7,8 +7,6 @@ module Log
   # This class validates the provided log file path in order to ensure
   # that final script will finish succesfully
   class Validator
-    attr_reader :file_path
-
     def initialize(file_path)
       @file_path = file_path
     end
@@ -21,6 +19,8 @@ module Log
     end
 
     private
+
+    attr_reader :file_path
 
     def file_path?
       !file_path.nil? && !file_path.empty?

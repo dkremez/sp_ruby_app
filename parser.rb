@@ -14,8 +14,8 @@ rescue StandardError => e
   exit
 end
 
-parser    = Log::Parser.new(file_path: file_path)
-stats     = Log::Statistic.new(lines: parser.lines)
-renderer  = Log::Renderer.new(stats: stats, output: $stdout)
+parser    = Log::Parser.new(file_path)
+# stats     = Log::Statistic.new(lines: parser.lines)
+# renderer  = Log::Renderer.new(stats: stats, output: $stdout)
 
-renderer.call
+# renderer.call
