@@ -46,6 +46,8 @@ GEM
       simplecov
       terminal-table
     simplecov-html (0.12.2)
+    simplecov-shields-badge (0.1.0)
+      simplecov (~> 0.15)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     unicode-display_width (1.6.1)
@@ -59,6 +61,7 @@ DEPENDENCIES
   rubocop
   simplecov
   simplecov-console
+  simplecov-shields-badge
 
 BUNDLED WITH
    2.1.4

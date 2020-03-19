@@ -1,4 +1,5 @@
-![RSpec Github Actions](https://github.com/dkremez/sp_ruby_app/workflows/Ruby/badge.svg?branch=master&event=push)
+![Ruby](https://github.com/dkremez/sp_ruby_app/workflows/Ruby/badge.svg?branch=master&event=push)
+[![Coverage](https://dkremez.github.io/sp_ruby_app/badge.svg)](https://github.com/dkremez/sp_ruby_app)
 
 # Ruby Developer Test
 

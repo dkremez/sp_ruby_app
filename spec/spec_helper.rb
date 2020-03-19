@@ -18,9 +18,15 @@
 require 'pry'
 require 'simplecov'
 require 'simplecov-console'
+require 'shields_badge'
 
-SimpleCov.formatter = SimpleCov.formatter = SimpleCov::Formatter::Console
-SimpleCov.start
+SimpleCov.start 'rails' do
+  if ENV['CI']
+    formatter SimpleCov::Formatter::ShieldsBadge
+  else
+    formatter SimpleCov::Formatter::Console
+  end
+end
 
 def fixture_path(filename)
   File.join(File.dirname(__FILE__), 'fixtures', filename.to_s)
