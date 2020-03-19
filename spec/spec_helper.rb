@@ -16,6 +16,8 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'pry'
+require 'simplecov'
+SimpleCov.start
 
 def fixture_path(filename)
   File.join(File.dirname(__FILE__), 'fixtures', filename.to_s)
