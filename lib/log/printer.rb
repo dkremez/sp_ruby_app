@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Log
+  # Prints calculated page visits statistic
   class Printer
     def initialize(statistic, output: $stdout)
       @statistic = statistic
@@ -8,13 +9,7 @@ module Log
     end
 
     def call
-      stats.most_visits.each do |stat|
-        line = Line.new(stat[0], stat[1], 'visit')
-        output.puts line
-      end
-
-      stats.most_uniq_views.each do |stat|
-        line = Line.new(stat[0], stat[1], 'unique view')
+      print_lines.each do |line|
         output.puts line
       end
     end
@@ -22,7 +17,23 @@ module Log
     private
 
     attr_reader :statistic, :output
-    alias_method :stats, :statistic 
+    alias stats statistic
+
+    def print_lines
+      visits_lines + uniq_view_lines
+    end
+
+    def visits_lines
+      stats.most_visits.map do |stat|
+        Line.new(stat[0], stat[1], 'visit')
+      end
+    end
+
+    def uniq_view_lines
+      stats.most_uniq_views.each do |stat|
+        Line.new(stat[0], stat[1], 'unique view')
+      end
+    end
 
     Line = Struct.new(:path, :count, :message) do
       def to_s
@@ -31,6 +42,7 @@ module Log
 
       def postfix
         return message + 's' if count > 1
+
         message
       end
     end

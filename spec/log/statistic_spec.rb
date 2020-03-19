@@ -8,9 +8,9 @@ RSpec.describe Log::Statistic do
   describe '#by_visits' do
     let(:expected_result) do
       {
-        "/contact"=>3,
-        "/about"=>2,
-        "/home"=>1
+        '/contact' => 3,
+        '/about' => 2,
+        '/home' => 1
       }
     end
 
@@ -22,9 +22,9 @@ RSpec.describe Log::Statistic do
   describe '#by_uniq_views' do
     let(:expected_result) do
       {
-        "/contact"=>2,
-        "/about"=>2,
-        "/home"=>1
+        '/contact' => 2,
+        '/about' => 2,
+        '/home' => 1
       }
     end
 
@@ -36,9 +36,9 @@ RSpec.describe Log::Statistic do
   describe '#most_visits' do
     let(:expected_result) do
       [
-        ["/contact", 3],
-        ["/about", 2],
-        ["/home", 1]
+        ['/contact', 3],
+        ['/about', 2],
+        ['/home', 1]
       ]
     end
 
@@ -50,9 +50,9 @@ RSpec.describe Log::Statistic do
   describe '#most_uniq_views' do
     let(:expected_result) do
       [
-        ["/contact", 2],
-        ["/about", 2],
-        ["/home", 1]
+        ['/contact', 2],
+        ['/about', 2],
+        ['/home', 1]
       ]
     end
 

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 module Log
+  # Parse logs lines into row to validate it and make easier to handle
   class Row
-    PATH_REGEX = /^\/.?/.freeze
+    PATH_REGEX = %r{^/.?}.freeze
     IP_REGEX = /^\d{3}.\d{3}.\d{3}.\d{3}$/.freeze
 
     def initialize(line)
@@ -19,7 +20,7 @@ module Log
 
     def valid?
       [path, ip].all? { |f| exists?(f) } &&
-      valid_path? && valid_ip?
+        valid_path? && valid_ip?
     end
 
     private
@@ -29,11 +30,11 @@ module Log
     end
 
     def valid_path?
-      !!(path =~ PATH_REGEX)
+      !(path =~ PATH_REGEX).nil?
     end
 
     def valid_ip?
-      !!(ip =~ IP_REGEX)
+      !(ip =~ IP_REGEX).nil?
     end
   end
 end

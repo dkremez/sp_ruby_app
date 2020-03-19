@@ -3,8 +3,9 @@
 require 'log/row'
 
 module Log
-  class InvalidLineError < StandardError; end 
+  class InvalidLineError < StandardError; end
 
+  # Parse web logs files into PORO []Row
   class Parser
     def initialize(file_path)
       @file_path = file_path
@@ -12,10 +13,10 @@ module Log
 
     def rows
       rows = []
-      open(file_path).each_line do |line|
+      File.open(file_path).each_line do |line|
         row = parse_line!(line)
         rows.push(row)
-      end  
+      end
       rows
     end
 
@@ -26,6 +27,7 @@ module Log
     def parse_line!(line)
       row = Row.new(line)
       raise InvalidLineError unless row.valid?
+
       row
     end
   end

@@ -6,7 +6,7 @@ RSpec.describe Log::Parser do
   describe '#lines' do
     context 'valid file' do
       let(:file_path) { fixture_path('logs/valid.log') }
-      let(:file_lines_count) { File.open(file_path, "r").readlines.size }
+      let(:file_lines_count) { File.open(file_path, 'r').readlines.size }
 
       it 'return parsed all lines' do
         expect(subject.rows.count).to eq file_lines_count

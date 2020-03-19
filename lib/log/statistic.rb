@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Log
+  # Calculate logs to find the most visited routes
+  # and the most visited unique routes
   class Statistic
     def initialize(log_rows)
       @log_rows = log_rows
@@ -11,7 +13,7 @@ module Log
     end
 
     def by_uniq_views
-      tally(rows.uniq { |row| row.path+row.ip })
+      tally(rows.uniq { |row| row.path + row.ip })
     end
 
     def most_visits
@@ -25,13 +27,12 @@ module Log
     private
 
     attr_reader :log_rows
-    alias_method :rows, :log_rows 
+    alias rows log_rows
 
     ## In Ruby 2.7.0 can be replaced by Array#tally
     def tally(array)
-      array.inject(Hash.new(0)) do |memo, row|
+      array.each_with_object(Hash.new(0)) do |row, memo|
         memo[row.path] += 1
-        memo
       end
     end
 

@@ -15,8 +15,8 @@ begin
   printer   = Log::Printer.new(statistic)
   printer.call
 rescue Log::NoFilePathError,
-  Log::FileNotExistsError,
-  Log::InvalidLineError => e
+       Log::FileNotExistsError,
+       Log::InvalidLineError => e
   puts e.message
   exit
 end
