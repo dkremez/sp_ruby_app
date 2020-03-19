@@ -9,13 +9,14 @@ file_path = ARGV[0]
 begin
   validator = Log::Validator.new(file_path)
   validator.validate!
-rescue StandardError => e
+
+  parser    = Log::Parser.new(file_path)
+  statistic = Log::Statistic.new(parser.rows)
+  printer   = Log::Printer.new(statistic)
+  printer.call
+rescue Log::NoFilePathError,
+  Log::FileNotExistsError,
+  Log::InvalidLineError => e
   puts e.message
   exit
 end
-
-parser    = Log::Parser.new(file_path)
-# stats     = Log::Statistic.new(lines: parser.lines)
-# renderer  = Log::Renderer.new(stats: stats, output: $stdout)
-
-# renderer.call

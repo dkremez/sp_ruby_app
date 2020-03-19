@@ -8,13 +8,13 @@ RSpec.describe 'parser.rb' do
         /contact 3 visits
         /about 2 visits
         /home 1 visit
-        /about 2 unique views
         /contact 2 unique views
+        /about 2 unique views
         /home 1 unique view
       OUTPUT
     end
 
-    xit 'prints the visits' do
+    it 'prints the visits' do
       expect(`./parser.rb #{log_path}`).to eq expected_output
     end
   end
