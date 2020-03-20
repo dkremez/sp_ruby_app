@@ -15,27 +15,27 @@ RSpec.describe 'parser.rb' do
     end
 
     it 'prints the visits' do
-      expect(`./parser.rb #{log_path}`).to eq expected_output
+      expect { system("./parser.rb #{log_path}") }.to output(expected_output).to_stdout_from_any_process
     end
   end
 
   context 'file path not provided' do
-    it 'raise no path error' do
-      expect(`./parser.rb`).to eq "Log file path not provided.\n"
+    it 'raise error' do
+      expect { system('./parser.rb') }.to output.to_stderr_from_any_process
     end
   end
 
   context 'invalid path' do
-    it 'raise no file error' do
-      expect(`./parser.rb no_path.log`).to eq "Log file doesn't exist.\n"
+    it 'raise error' do
+      expect { system('./parser.rb no_path.log') }.to output.to_stderr_from_any_process
     end
   end
 
   context 'invalid file' do
     let(:log_path) { fixture_path('logs/invalid.log') }
 
-    it 'raise no file error' do
-      expect(`./parser.rb #{log_path}`).to eq "Invalid format at line #1.\n"
+    it 'raise error' do
+      expect { system("./parser.rb #{log_path}") }.to output.to_stderr_from_any_process
     end
   end
 end

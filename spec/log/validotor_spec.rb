@@ -7,9 +7,7 @@ RSpec.describe Log::Validator do
     context 'valid path' do
       let(:file_path) { fixture_path('logs/valid.log') }
 
-      it 'raise no file error' do
-        expect(subject.validate!).to be_truthy
-      end
+      it { expect(subject.validate!).to be_truthy }
     end
 
     context 'file path not provided' do
@@ -23,7 +21,7 @@ RSpec.describe Log::Validator do
     context 'invalid path' do
       let(:file_path) { 'no_file.log' }
 
-      it 'raise no file error' do
+      it 'raise file not exists error' do
         expect { subject.validate! }.to raise_error(Log::FileNotExistsError, "Log file doesn't exist.")
       end
     end

@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 $LOAD_PATH << File.join(__dir__, 'lib')
+require 'colorize'
 require 'sp_ruby_app'
 
 file_path = ARGV[0]
@@ -17,6 +18,6 @@ begin
 rescue Log::NoFilePathError,
        Log::FileNotExistsError,
        Log::InvalidLineError => e
-  puts e.message
+  warn(e.message&.colorize(:red))
   exit
 end

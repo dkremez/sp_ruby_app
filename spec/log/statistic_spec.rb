@@ -42,7 +42,7 @@ RSpec.describe Log::Statistic do
       ]
     end
 
-    it 'groups rows by uniq views from most to least' do
+    it 'return array of visits from most to least' do
       expect(subject.most_visits).to eq expected_result
     end
   end
@@ -56,7 +56,7 @@ RSpec.describe Log::Statistic do
       ]
     end
 
-    it 'groups rows by uniq views from most to least' do
+    it 'return array of uniq views from most to least' do
       expect(subject.most_uniq_views).to eq expected_result
     end
   end
