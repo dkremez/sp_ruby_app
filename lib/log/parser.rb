@@ -5,27 +5,27 @@ require 'log/row'
 module Log
   class InvalidLineError < StandardError; end
 
-  # Parse web logs files into PORO []Row
+  # Parse web logs files
   class Parser
-    def initialize(file_path)
+    def initialize(file_path, line_parser_class: Row, storage:)
       @file_path = file_path
+      @line_parser_class = line_parser_class
+      @storage = storage
     end
 
-    def rows
-      rows = []
+    def call
       File.foreach(file_path).with_index do |line, i|
         row = parse_line!(line, i + 1)
-        rows.push(row)
+        storage.update(row.path, row.ip)
       end
-      rows
     end
 
     private
 
-    attr_reader :file_path
+    attr_reader :file_path, :line_parser_class, :storage
 
     def parse_line!(line, line_num)
-      row = Row.new(line)
+      row = line_parser_class.new(line)
       raise_line_error(line_num) unless row.valid?
       row
     end

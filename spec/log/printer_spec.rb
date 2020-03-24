@@ -1,9 +1,19 @@
 # frozen_string_literal: true
 
 RSpec.describe Log::Printer do
-  let(:file_path) { fixture_path('logs/valid.log') }
-  let(:rows) { Log::Parser.new(file_path).rows }
-  let(:statistic) { Log::Statistic.new(rows) }
+  let(:statistic) do
+    double('StatisticReport',
+           most_visits: [
+             ['/contact', 3],
+             ['/about', 2],
+             ['/home', 1]
+           ],
+           most_uniq_views: [
+             ['/contact', 2],
+             ['/about', 2],
+             ['/home', 1]
+           ])
+  end
   subject { described_class.new(statistic) }
 
   describe '#call' do
