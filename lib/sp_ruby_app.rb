@@ -3,5 +3,6 @@
 require 'pry'
 require 'log/validator'
 require 'log/parser'
-require 'log/statistic'
+require 'log/statistic_storage'
+require 'log/statistic_report'
 require 'log/printer'

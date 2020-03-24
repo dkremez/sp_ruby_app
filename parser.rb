@@ -11,9 +11,12 @@ begin
   validator = Log::Validator.new(file_path)
   validator.validate!
 
-  parser    = Log::Parser.new(file_path)
-  statistic = Log::Statistic.new(parser.rows)
-  printer   = Log::Printer.new(statistic)
+  stats_storage = Log::StatisticStorage.new
+  parser        = Log::Parser.new(file_path, storage: stats_storage)
+  parser.call
+
+  stats_report  = Log::StatisticReport.new(stats_storage)
+  printer       = Log::Printer.new(stats_report)
   printer.call
 rescue Log::NoFilePathError,
        Log::FileNotExistsError,
