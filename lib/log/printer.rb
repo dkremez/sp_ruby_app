@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'terminal-table'
+
 module Log
   # Prints calculated page visits statistic
   class Printer
@@ -9,9 +11,8 @@ module Log
     end
 
     def call
-      print_lines.each do |line|
-        output.puts line
-      end
+      puts visits_table
+      puts uniq_views_table
     end
 
     private
@@ -19,32 +20,30 @@ module Log
     attr_reader :statistic, :output
     alias stats statistic
 
-    def print_lines
-      visits_lines + uniq_view_lines
+    def visits_table
+      Terminal::Table.new headings: %w[Path Count Message], rows: visits_rows
     end
 
-    def visits_lines
+    def uniq_views_table
+      Terminal::Table.new headings: %w[Path Count Message], rows: uniq_view_rows
+    end
+
+    def visits_rows
       stats.most_visits.map do |stat|
-        Line.new(stat[0], stat[1], 'visit')
+        message = pluralize('visit', stat[1])
+        stat + [message]
       end
     end
 
-    def uniq_view_lines
-      stats.most_uniq_views.map do |stat|
-        Line.new(stat[0], stat[1], 'unique view')
+    def uniq_view_rows
+      stats.most_visits.map do |stat|
+        message = pluralize('unique view', stat[1])
+        stat + [message]
       end
     end
 
-    Line = Struct.new(:path, :count, :message) do
-      def to_s
-        "#{path} #{count} #{postfix}"
-      end
-
-      def postfix
-        return message + 's' if count > 1
-
-        message
-      end
+    def pluralize(word, count)
+      count > 1 ? "#{word}s" : word
     end
   end
 end
