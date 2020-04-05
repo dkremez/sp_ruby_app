@@ -12,7 +12,7 @@
 
 ## Final output
 
-![Screen Shot 2020-04-05 at 1 12 09 PM](https://user-images.githubusercontent.com/4772270/78472182-689d3680-773f-11ea-8dae-874d7e3d4494.png)
+![Screen Shot 2020-04-05 at 3 26 33 PM](https://user-images.githubusercontent.com/4772270/78493964-f8e47700-7751-11ea-8a3d-fb16c9750ef4.png)
 
 ## Task description
 
