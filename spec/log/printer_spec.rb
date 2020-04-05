@@ -19,20 +19,20 @@ RSpec.describe Log::Printer do
   describe '#call' do
     let(:expected_output) do
       <<~OUTPUT
-        +----------+-------+---------+
-        | Path     | Count | Message |
-        +----------+-------+---------+
-        | /contact | 3     | visits  |
-        | /about   | 2     | visits  |
-        | /home    | 1     | visit   |
-        +----------+-------+---------+
-        +----------+-------+--------------+
-        | Path     | Count | Message      |
-        +----------+-------+--------------+
-        | /contact | 3     | unique views |
-        | /about   | 2     | unique views |
-        | /home    | 1     | unique view  |
-        +----------+-------+--------------+
+        +----------+--------+
+        | Path     | Visits |
+        +----------+--------+
+        | /contact | 3      |
+        | /about   | 2      |
+        | /home    | 1      |
+        +----------+--------+
+        +----------+--------------+
+        | Path     | Unique views |
+        +----------+--------------+
+        | /contact | 2            |
+        | /about   | 2            |
+        | /home    | 1            |
+        +----------+--------------+
       OUTPUT
     end
 
