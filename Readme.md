@@ -10,6 +10,10 @@
 ## Run tests
 1. `bundle exec rspec`
 
+## Final output
+
+![Screen Shot 2020-04-05 at 1 12 09 PM](https://user-images.githubusercontent.com/4772270/78472182-689d3680-773f-11ea-8dae-874d7e3d4494.png)
+
 ## Task description
 
 Before you start coding (and let’s be honest, we know that’s what you want to do), please read the following.
