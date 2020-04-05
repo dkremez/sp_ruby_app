@@ -21,29 +21,19 @@ module Log
     alias stats statistic
 
     def visits_table
-      Terminal::Table.new headings: %w[Path Count Message], rows: visits_rows
+      Terminal::Table.new headings: %w[Path Visits], rows: visits_rows
     end
 
     def uniq_views_table
-      Terminal::Table.new headings: %w[Path Count Message], rows: uniq_view_rows
+      Terminal::Table.new headings: ['Path', 'Unique views'], rows: uniq_view_rows
     end
 
     def visits_rows
-      stats.most_visits.map do |stat|
-        message = pluralize('visit', stat[1])
-        stat + [message]
-      end
+      stats.most_visits
     end
 
     def uniq_view_rows
-      stats.most_visits.map do |stat|
-        message = pluralize('unique view', stat[1])
-        stat + [message]
-      end
-    end
-
-    def pluralize(word, count)
-      count > 1 ? "#{word}s" : word
+      stats.most_uniq_views
     end
   end
 end
