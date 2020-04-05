@@ -5,12 +5,20 @@ RSpec.describe 'parser.rb' do
     let(:log_path) { fixture_path('logs/valid.log') }
     let(:expected_output) do
       <<~OUTPUT
-        /contact 3 visits
-        /about 2 visits
-        /home 1 visit
-        /contact 2 unique views
-        /about 2 unique views
-        /home 1 unique view
+        +----------+-------+---------+
+        | Path     | Count | Message |
+        +----------+-------+---------+
+        | /contact | 3     | visits  |
+        | /about   | 2     | visits  |
+        | /home    | 1     | visit   |
+        +----------+-------+---------+
+        +----------+-------+--------------+
+        | Path     | Count | Message      |
+        +----------+-------+--------------+
+        | /contact | 3     | unique views |
+        | /about   | 2     | unique views |
+        | /home    | 1     | unique view  |
+        +----------+-------+--------------+
       OUTPUT
     end
 
